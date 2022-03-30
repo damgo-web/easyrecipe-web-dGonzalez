@@ -1,0 +1,46 @@
+.navbar-dark{
+	color:white;
+}
+.fakeimg {
+   width: 100%;
+   height: auto;
+   background: #FDAC53 ;
+   }
+footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #FDAC53;
+   color: white;
+   text-align: center;
+ }
+
+#YouTube {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: -72px 0;
+background-image: url("images/sprites.png") ;
+}
+#Pinterest {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: 0 -72px;
+background-image: url("images/sprites.png");
+}
+#Instagram {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: -72px -288px;
+background-image: url("images/sprites.png") ;
+}
+#Twitter {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: 0 0px;
+background-image: url("images/sprites.png");
+}
+
