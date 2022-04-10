@@ -1,0 +1,93 @@
+body{
+	font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.navbar {
+	background-color: #FDAC53;
+    color: white;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.navbar-toggle .icon-bar{ 
+background-color: #fff;
+}
+a:hover {
+  background-color: #00758f;
+}
+
+.navbar-nav > li >a:hover {
+	 background-color: #00758f;
+}
+
+
+ .affix {
+    top: 0;
+    width: 100%;
+    z-index: 9999 !important;
+  }
+
+  .affix + #fakeimg {
+    padding-top: 100px;
+  }
+
+
+main{
+	padding: 0px;
+}
+
+.bg-1 { 
+    background-color:#669999;
+	color: #ffffff;
+	text-align:center;
+}
+.bg-2 { 
+    background-color:#f2f8f9;
+}
+
+footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #FDAC53;
+   color: white;
+   text-align: center;
+ }
+
+#YouTube {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: -72px 0;
+background-image: url("images/sprites.png") ;
+}
+#Pinterest {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: 0 -72px;
+background-image: url("images/sprites.png");
+}
+#Instagram {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: -72px -288px;
+background-image: url("images/sprites.png") ;
+}
+#Twitter {
+display: inline-block;
+width: 72px;
+height: 72px;
+background-position: 0 0px;
+background-image: url("images/sprites.png");
+}
+

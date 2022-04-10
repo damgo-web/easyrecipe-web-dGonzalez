@@ -166,6 +166,7 @@ if ($logged_in){
 
 $pageContent .= <<<HERE
 	<section class="container">
+	<div class="jumbotron">
 		$message
 		<h1> Welcome, $firstname  $lastname </h1>
 		<figure><img src = "images/$image_name" alt= "Profile image" class="profile_image" style="style="float:left;width:120px;height:120px;">
@@ -176,6 +177,7 @@ $pageContent .= <<<HERE
 		<p>You are logged in. </p>
 		<p>This is your username for future login</p>
 		<p> Username: <strong> $username</strong></p>
+	</div>
 	<section>\n
 HERE;
 
@@ -185,7 +187,8 @@ HERE;
 	}
 
 $pageContent .=<<<HERE
-<div class="container" style="margin-top:30px">
+<div class="container">
+	<div class="jumbotron">
 
 		<fieldset>
 		<legend> Easy Recipe Registration </legend>
@@ -234,6 +237,7 @@ $pageContent .=<<<HERE
 			</div>
 		</form>
 		</fieldset>\n
+	</div>
 </div>
 HERE;
 }

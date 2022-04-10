@@ -60,6 +60,7 @@ if (isset($_POST['delete_profile'])){
 
 $pageContent .= <<<HERE
 	<section class="container">
+	<div class="jumbotron">
 		<h1> Delete User Account </h1>
 		<p class="alert alert-danger"> Are you sure want to delete this member account? This action cannot be undone!</p>
 	$message
@@ -82,6 +83,7 @@ $pageContent .= <<<HERE
 			<input type="submit" class="btn btn-danger btn-lg" name="delete_profile" value="Delete Profile">
 		</div>
 	</form>
+	</div>
 	<section>\n
 HERE;
 

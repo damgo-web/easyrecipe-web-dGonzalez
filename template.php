@@ -1,4 +1,5 @@
 <?php
+
 echo<<<HERE
 <!DOCTYPE html>
 <html lang="en">
@@ -6,65 +7,49 @@ echo<<<HERE
         <title>Easy Recipes</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+        <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha-long-hash_code" crossorigin="anonymous">
 	   <!-- internal css -->
-        <link rel="stylesheet" href="index.css">
-
+        <link rel="stylesheet" href="style.css">
     </head>
 <body>
-	<header class="fakeimg" style="margin-bottom:0" >
-			<img src="images/hero2.png" class="fakeimg" alt="Cinque Terre" >
+	<header>
+			<img class="img-responsive" src="images/hero2.png"  alt="Cinque Terre" >
 	</header>
+	<nav class="navbar" data-spy="affix" data-offset-top="700" >
 
-	<nav class="navbar navbar-expand-sm navbar-dark" style="background-color:#FDAC53 ;">
-		<a href="index.php" class="home" style="color:white; font-weight: bold;">Home</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-		</button>
-		
-		<div class="collapse navbar-collapse" id="navbarNav">
-			
-			<ul class="navbar-nav ">
-
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"  data-bs-toggle="dropdown" aria-expanded="false"> Recipe Gallery </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a href="recipes-admin.php"
-						class="dropdown-item">Breakfast </a></li>
-						<li><a href="recipes-admin.php"
-						class="dropdown-item">Lunch </a></li>
-						<li><a href="recipes-admin.php"
-						class="dropdown-item">Dinner </a></li>
-						<li><a href="recipes-admin.php"
+			<div class="navbar-header">
+			<button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.php" style="color:white; font-weight: bold;">Home</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav" >
+				<li><a href="profile.php" > Profile </a> </li>
+				<li><a href="recipes-admin.php" > Recipes </a> </li> 
+				<li><a href="#" >Gallery </a> </li>
+				<li><a href="#" >About Us</a> </li>
+				<li><a href="#"	>Contact Us</a></li>
 					</ul>
-				</li>
-				<li class="nav-item dropdown">
-					<a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">About Us </a>
-					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<li><a href="#"
-						class="dropdown-item">Who we are?</a></li>
-						<li><a href="#"
-						class="dropdown-item">Why Recipe webpage?</a></li>
-						<li><a href="#"
-						class="dropdown-item">What we love?</a></li>
-						<li><a href="#"
-						class="dropdown-item">How to contact us?</a></li>
-					</ul>
-				</li>
 			</ul>
-		</div>
+			</div>
 
-
-	 </nav>
+		<div>
+	</nav>
     
 HERE;
 print $pageContent;
 echo<<<HERE
-	 <footer class="container-fluid">
+	<footer class="container-fluid">
 	<br>
 					<a  href="login.php" >
 					<button type="button"  class="btn" style="background-color:#00758f; color:white;"> Sign In </button>
@@ -83,6 +68,7 @@ echo<<<HERE
 					
 					<p>© BHC Web Dev 2022</p>
 	 </footer>
+
 </body>
 
 </html>

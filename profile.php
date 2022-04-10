@@ -182,23 +182,83 @@ if (isset($_POST['update'])) {
 	
 if (!$update){
 $pageContent .= <<<HERE
-	<section class="container">
-		$message
-		<h1> Welcome, $firstname  $lastname </h1>
-		<figure><img src = "images/$image_name" alt= "Profile image" class="profile_image" style="style="float:left;width:120px;height:120px;">
-			<figcaption> Nickname:  $nickname </figcaption>
-		</figure>
-		<p><a href="profile.php?update&userID=$userID"> Update Profile </a></p>
-		<p>Email:  $email </p>
-		<p>You are logged in. </p>
-		<p>This is your username for future login</p>
-		<p> Username: <strong> $username</strong></p>
-	<section>\n
+<main class="container-fluid">
+	<div class= "row">
+		
+		<div class="col-md-3 col-lg-3 order-md-last bg-1" >
+			$message
+			
+			<h1>Profile</h1>
+			<br>
+			<h3>$firstname $lastname</h2>
+
+			<figure><img src = "images/$image_name" alt= "Profile image" class="img-responsive img-circle margin" style="display:inline;width:100px;height:100px;">
+			</figure>
+			
+			<p>Nickname:  $nickname</p>
+			<p>Email:  $email </p>
+			
+			<p>Username: <strong> $username</strong></p>
+			<p><small>This is your username for future login</small></p>
+			<br>
+			<p>You are logged in. </p>
+			<p><a href="profile.php?update&userID=$userID" class="btn  btn-default"> Update Profile </a></p>
+		</div>\n
+		
+		<div class="col-md-9 col-lg-9 bg-2">
+			<h2 class="text-center">My Recipes Selections</h2>
+			<p class="text-center">Please select a recipe below.</p>
+			<ul class="nav nav-tabs">
+					<li class="active"><a data-toggle="tab" href="#home">1</a></li>
+					<li><a data-toggle="tab" href="#menu1">2</a></li>
+					<li><a data-toggle="tab" href="#menu2">3</a></li>
+					<li><a data-toggle="tab" href="#menu3">4</a></li>
+			</ul>
+			<div class="tab-content">
+				<div id="home" class="tab-pane fade in active">
+				<h3><a href="recipes-admin.php?recipeID=1"> First Recipe</a></h3>
+				<p></p>
+				<p></p>
+				</div>
+				<div id="menu1" class="tab-pane fade">
+				<h3><a  href="recipes-admin.php?recipeID=2"> Second Recipe</a></h3>
+				<p></p>
+				<p></p>
+				</div>
+				<div id="menu2" class="tab-pane fade">
+				<h3><a href="recipes-admin.php?recipeID=3"> Third Recipe</a></h3>
+				<p></p>
+				<p></p>
+				</div>
+				<div id="menu3" class="tab-pane fade">
+				<h3><a href="recipes-admin.php?recipeID=4"> Third Recipe</a></h3>
+				<p></p>
+				<p></p>
+				</div>
+			</div>
+			<hr>
+			
+			
+			<form action="recipes-admin.php" method="post">
+			<br><br>
+			<br><br>
+			<br><br>
+			<br><br>
+				<div class="form-group">
+					<input type="submit" name="edit" value="Create a New Recipe" class="btn btn-primary">
+				</div>
+			</form>
+			<br>
+		</div>
+	
+	</div>
+</main>\n
 HERE;
 
 }else{	
 $pageContent .=<<<HERE
-	<section class="container">
+	<main class="container-fluid">
+	<div class="jumbotron">
 	$message
 	<p>Please, update your information. </p>
 	<form method="post" enctype="multipart/form-data" action="profile.php">
@@ -239,17 +299,17 @@ $pageContent .=<<<HERE
 			<div class="form-group">
 				<input type="hidden" class="btn btn-primary btn-lg" name="avatar" value="$image_name">
 				<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
-				<input type="submit" class="btn btn-warning btn-lg" name="update" value="Update Profile">
+				<input type="submit" class="btn btn-success btn-lg" name="update" value="Update Profile">
 			</div>
 	</form>
-	<form method="post" action="delete-verify.php">
+	<form method="post" action="update.php">
 		<div class="form-group">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
 			<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete Profile">
 		</div>
 	</form>
-		
-	</section>\n
+	</div>
+</main>\n
 HERE;
 }
 
