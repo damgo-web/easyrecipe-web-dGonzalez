@@ -79,23 +79,22 @@ HERE;
 }
 $pageContent .= <<<HERE
 <br>
-	<section class="container">
-	<div class="jumbotron">
+	<section  class="container p-5 my-5 bg-light text-secondary rounded">
 		$message
 		<form action ="login.php" method ="post">
-			<div class="form-group">
-			<label> Username </label>
+			<div class="mb-3 mt-3">
+			<label class="form-label font-weight-bold"> Username </label>
 			<input type="text" class="form-control" id="username" name="username" value="$username" required/>
 			$invalid_user 
 			</div>
-			<div class="form-group">
-			<label> Password </label>
+			<div class="mb-3 mt-3">
+			<label class="form-label font-weight-bold"> Password </label>
 			<input type="password" class="form-control" id="password" name="password" required/>
 			$invalid_password 
 			</div>
+			
 			<input class="btn btn-success" type="submit" name="login" value="login"/>
 		</form>
-	</div>
 	</section>
 HERE;
 

@@ -7,7 +7,7 @@ if (!$conn){
 if(isset ($_SESSION['userID'])){
 	$userID =  $_SESSION['userID'];
 ///}elseif(isset ($_GET['userID'])){
-///	$userID =  $_GET['userID'];
+	///$userID =  $_GET['userID'];
 }else{
 	header ("Location: register.php");
 	exit();
@@ -17,7 +17,6 @@ $pageTitle = "Profile";
 
 $firstname = NULL;
 $lastname = NULL;
-$nickname =NULL; 
 $username = NULL;
 $role=NULL;
 $email = NULL;
@@ -66,11 +65,6 @@ if (isset($_POST['update'])) {
 		$valid = FALSE;
 	}
 	
-	$nickname = mysqli_real_escape_string($conn,ucwords(trim($_POST['nickname'])));
-	if (empty($nickname)){ 
-		$nickname_error = '<span class="text-danger"> - Field Required!</span>';
-		$valid = FALSE;
-	}
 	
 	$email = (trim($_POST['email']));
 	if (empty($email)){ 
@@ -83,7 +77,7 @@ if (isset($_POST['update'])) {
 	} 
 	
 	if ($valid){
-		$query = "UPDATE `user_table` SET `firstname` = '$firstname', `lastname` = '$lastname', `nickname` = '$nickname', `email` = '$email' WHERE `userID`= $userID;";
+		$query = "UPDATE `user_table` SET `firstname` = '$firstname', `lastname` = '$lastname', `email` = '$email' WHERE `userID`= $userID;";
 		$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 		if (!$result) {
 			die(mysqli_error($conn));
@@ -179,7 +173,6 @@ if (isset($_POST['update'])) {
 		$firstname = $row ['firstname'];
 		$lastname = $row ['lastname'];
 		$username = $row ['username'];
-		$nickname= $row ['nickname'];
 		$email = $row ['email'];
 		$image_name = $row ['avatar'];
 	}else{
@@ -188,86 +181,66 @@ if (isset($_POST['update'])) {
 	
 if (!$update){
 $pageContent .= <<<HERE
-<main class="container-fluid">
+<section  class="container p-5 my-5 bg-light text-secondary rounded">
 	<div class= "row">
 		
-		<div class="col-md-3 col-lg-3 order-md-last bg-1" >
-			$message
-			
-			<h1>Profile</h1>
-			<br>
-			<h3>$firstname $lastname</h2>
-			
+		<div class="col-sm-6 col-lg-4 " >
+			<div class="card  bg gradient-custom text-center text-white" style="border-radius: 15px;";
+				$message
+				<h3>Profile</h3>
+				<br>
+				<h3>$firstname $lastname</h3>
 
-			<figure><img src = "images/$image_name" alt= "Profile image" class="img-responsive img-circle margin" style="display:inline;width:100px;height:100px;">
-			</figure>
-			
-			<p>Nickname:  <h2>$nickname</h2></p>
-			<p>Email:  $email </p>
-			
-			<p>Username: <strong> $username</strong></p>
-			<p><small>This is your username for future login</small></p>
-			<br>
-			<p> <h3>You are logged in! </h3></p>
-			<p><a href="profile.php?update&userID=$userID" class="btn  btn-default"> Update Profile </a></p>
-		</div>\n
+				<figure><img src = "images/$image_name" alt= "Profile image" "img-fluid my-5" style="width: 80px;">
+				</figure>
+				
+				
+				<p>Email:  $email </p>
+				
+				<p>Username: <strong> $username</strong></p>
+				<p><small>This is your username for future login</small></p>
+				<br>
+				<h3>You are logged in! </h3>
+				<div class="mb-3 mt-3">
+				<form action="profile.php?update&userID=$userID" method="post">
+				<input type="submit" name="edit" value="Update Profile" class="btn btn-secondary">
+				</form>
+				</div>
+				<div class="mb-3 mt-3">
+				<form action="recipes-admin.php" method="post">
+				<input type="submit" name="edit" value="Create a New Recipe" class="btn btn-primary">
+				</form>
+				</div>
+			</div>
+		</div>
 		
-		<div class="col-md-9 col-lg-9 bg-2">
+		<div class="col-sm-6 col-lg-8">
 			<h2 class="text-center">My Recipes Selections</h2>
 			<p class="text-center">Please select a recipe below.</p>
 			<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#home">1</a></li>
-					<li><a data-toggle="tab" href="#menu1">2</a></li>
-					<li><a data-toggle="tab" href="#menu2">3</a></li>
-					<li><a data-toggle="tab" href="#menu3">4</a></li>
+					<li class="nav-item"><a  class="nav-link active" href="recipes-admin.php?recipeID=1"> 1st Recipe</a></li>
+					<li class="nav-item"><a  class="nav-link"href="recipes-admin.php?recipeID=2"> 2nd Recipe</a></li>
+					<li class="nav-item"><a class="nav-link" href="recipes-admin.php?recipeID=3"> 3rd Recipe</a></li>
+					<li class="nav-item"><a class="nav-link" href="recipes-admin.php?recipeID=4"> 4th Recipe</a></li>
+					<li class="nav-item"><a class="nav-link" href="recipes-admin.php?recipeID=4"> 5th Recipe</a></li>
+					<li class="nav-item"><a class="nav-link" href="recipes-admin.php?recipeID=4"> 6th Recipe</a></li>
+					<li class="nav-item"><a class="nav-link" href="recipes-admin.php?recipeID=4"> 7th Recipe</a></li>
 			</ul>
-			<div class="tab-content">
-				<div id="home" class="tab-pane fade in active">
-				<h3><a href="recipes-admin.php?recipeID=1"> First Recipe</a></h3>
-				<p></p>
-				<p></p>
-				</div>
-				<div id="menu1" class="tab-pane fade">
-				<h3><a  href="recipes-admin.php?recipeID=2"> Second Recipe</a></h3>
-				<p></p>
-				<p></p>
-				</div>
-				<div id="menu2" class="tab-pane fade">
-				<h3><a href="recipes-admin.php?recipeID=3"> Third Recipe</a></h3>
-				<p></p>
-				<p></p>
-				</div>
-				<div id="menu3" class="tab-pane fade">
-				<h3><a href="recipes-admin.php?recipeID=4"> Third Recipe</a></h3>
-				<p></p>
-				<p></p>
-				</div>
-			</div>
 			<hr>
 			
-			
-			<form action="recipes-admin.php" method="post">
-			<br><br>
-			<br><br>
-			<br><br>
-			<br><br>
-				<div class="form-group">
-					<input type="submit" name="edit" value="Create a New Recipe" class="btn btn-primary">
-				</div>
-			</form>
 			<br>
 		</div>
 	
 	</div>
-</main>\n
+</section>\n
 HERE;
 
 }else{	
 $pageContent .=<<<HERE
-	<main class="container-fluid">
-	<div class="jumbotron">
+	<section  class="container p-5 my-5 bg-light text-secondary rounded">
+	
 	$message
-	<p>Please, update your information. </p>
+	<p class="fw-bold">Please, update your information. </p>
 	<form method="post" enctype="multipart/form-data" action="profile.php">
 		<div class="form-group">
 			<label for="firstname">First Name: </label>
@@ -279,11 +252,7 @@ $pageContent .=<<<HERE
 			<input type="text" placeholder="Last Name" name="lastname" id="lastname" value="$lastname" class="form-control">
 			$lastname_error
 		</div>
-		<div class="form-group">
-			<label for="nickname">Nickname: </label>
-			<input type="text" placeholder="Nickname" name="nickname" id="nickname" value="$nickname" class="form-control">
-			$nickname_error
-		</div>
+		
 		<div class="form-group">
 			<label for="email">Email: </label>
 			<input type="text" placeholder="example@example.com" name="email" id="email" value="$email" class="form-control">
@@ -300,28 +269,29 @@ $pageContent .=<<<HERE
 			$password_match_error
 		</div>
 		<figure><img src="images/$image_name" alt= "Profile Avatar" class="profile_image" style="padding:15px;width:220px;height:220px;"/>
-		<figcaption>Member:  $firstname  $lastname  </figcaption>
+		<figcaption class="fw-bold">Member:  $firstname  $lastname  </figcaption>
 		</figure>
 			<p style "clear: both;">Please upload an image for your profile. </p>
-			<div class="form-group"> 
+			<div class="mb-3 mt-3">
 			<input type="hidden"  name="MAX_FILE_SIZE"  value="300000" >
 			<label for="profile_image">File to Upload: </label> <span class="text-danger" style="font-size:20px;background-color:powderblue;"><br>$invalid_image </span>
 			<input type="file" name="profile_image" id="profile_image" class="form-control">
 			</div>
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<input type="hidden" class="btn btn-primary btn-lg" name="avatar" value="$image_name">
 				<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
 				<input type="submit" class="btn btn-success btn-lg" name="update" value="Update Profile">
 			</div>
 	</form>
 	<form method="post" action="update.php">
-		<div class="form-group">
+		<div class="mb-3 mt-3">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
 			<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete Profile">
 		</div>
 	</form>
+	<a href="profile.php" class="text-start" > Back </a>	
 	</div>
-</main>\n
+</section>\n
 HERE;
 }
 

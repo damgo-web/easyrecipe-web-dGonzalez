@@ -13,7 +13,6 @@ $logged_in = FALSE;
 
 $firstname = NULL; 
 $lastname = NULL; 
-$nickname =NULL; 
 $username = NULL; 
 
 $firstname_error = NULL;
@@ -48,12 +47,6 @@ if (isset($_POST['submit'])) {
 		$valid = FALSE;
 	}
 	
-	
-	$nickname = mysqli_real_escape_string($conn,ucwords(trim($_POST['nickname'])));
-	if (empty($_POST['nickname'])){ 
-		$nickname_error = '<span class="text-danger"> - Field Required!</span>';
-		$valid = FALSE;
-	}
 	
 	$username= strtolower(substr ($firstname, 0,1).$lastname);
 	
@@ -121,7 +114,7 @@ if (isset($_POST['submit'])) {
 						///encrypt
 						$password = password_hash($password, PASSWORD_DEFAULT);
 						///change
-						$query = "INSERT INTO `user_table` VALUES (DEFAULT,'2','user','$firstname','$lastname','$username','$nickname','$email','$password', '$image_name');";
+						$query = "INSERT INTO `user_table` VALUES (DEFAULT,'2','$firstname','$lastname','$username','$email','$password', '$image_name');";
 						$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 						if (!$result) {
 							die(mysqli_error($conn));
@@ -159,7 +152,6 @@ if ($logged_in){
 		$firstname = $row ['firstname'];
 		$lastname = $row ['lastname'];
 		$username = $row ['username'];
-		$nickname= $row ['nickname'];
 		$email = $row ['email'];
 		$image_name = $row ['avatar'];
 	}else{
@@ -168,20 +160,20 @@ if ($logged_in){
 
 $pageContent .= <<<HERE
 	<br>
-	<section class="container">
+	<section  class="container p-5 my-5 bg-light text-secondary rounded">
 
-	<div class="jumbotron">
+	
 		$message
 		<h1> Welcome, $firstname  $lastname </h1>
 		<figure><img src = "images/$image_name" alt= "Profile image" class="profile_image" style="style="float:left;width:120px;height:120px;">
-			<figcaption> Nickname:  $nickname </figcaption>
+
 		</figure>
 		<p><a href="profile.php?userID=$userID"> View Profile </a></p>
 		<p>Email:  $email </p>
 		<p>You are logged in. </p>
 		<p>This is your username for future login</p>
 		<p> Username: <strong> $username</strong></p>
-	</div>
+
 	<section>\n
 HERE;
 
@@ -191,57 +183,50 @@ HERE;
 	}
 
 $pageContent .=<<<HERE
-<div class="container">
-	<div class="jumbotron">
-
+<div class="container p-5 my-5 bg-light text-secondary rounded">
+	
 		<fieldset>
 		<legend> Easy Recipe Registration </legend>
 		<form method="post" enctype="multipart/form-data" action="register.php">
 
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<label for="firstname">First Name: </label>
 				<input type="text" placeholder="First Name" name="firstname" id="firstname" value="$firstname" class="form-control">$firstname_error
 			</div>
 			
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<label for="lastname">Last Name: </label>
 				<input type="text" placeholder="Last Name" name="lastname" id="lastname" value="$lastname" class="form-control">$lastname_error
 			</div>
 			
-			<div class="form-group">
-				<label for="nickname">Nickname: </label>
-				<input type="text" placeholder="Nickname" name="nickname" id="nickname" value="$nickname" class="form-control">$nickname_error
-			</div>
-			
-			
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<label for="email">Email: </label>
 				<input type="text" placeholder="example@example.com" name="email" id="email" value="$email" class="form-control">$email_error 
 			</div>
 					
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<label for="password">Password: </label>
 				<input type="password" placeholder="" name="password" id="password" value="" class="form-control">$password_error
 			</div>
 					
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<label for="password_verify">Password Verify: </label>
 				<input type="password" placeholder="" name="password_verify" id="password_verify" value="" class="form-control">$password_match_error
 			</div>
 				
 			<p>For new registration, please upload an image </p>
-			<div class="form-group"> 
+			<div class="mb-3 mt-3"> 
 			<input type="hidden"  name="MAX_FILE_SIZE"  value="300000" >
 			<label for="profile_image">File to Upload: </label> <span class="text-danger" style="font-size:20px;background-color:powderblue;"><br>$invalid_image </span>
 			<input type="file" name="profile_image" id="profile_image" class="form-control">
 			</div>
-			<div class="form-group">
+			<div class="mb-3 mt-3">
 				<button class="btn btn-primary " type="submit" name="submit" value="Submit ">Submit Application</button>
 				<button class="btn btn-danger " type="submit" name="reset" value="Reset ">Reset</button>
 			</div>
 		</form>
 		</fieldset>\n
-	</div>
+
 </div>
 HERE;
 }

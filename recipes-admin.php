@@ -151,7 +151,7 @@ if ($recipeID){
 }
 
 $button =<<<HERE
-	<div class="form-group">
+	<div class="mb-3 mt-3">
 		<input type="hidden" name="recipeID" value="$recipeID">
 		<input type="hidden" name="process">
 		<input type="submit" name="update" value="Update Recipe" class="btn btn-success">
@@ -159,7 +159,7 @@ $button =<<<HERE
 HERE;
 }else{
 $button =<<<HERE
-	<div class="form-group">
+	<div class="mb-3 mt-3">
 		<input type="hidden" name="process">
 		<input type="submit" name="insert" value="Save Recipe" class="btn btn-success">
 	</div>
@@ -168,8 +168,8 @@ HERE;
 
 if ($edit){
 $pageContent.= <<<HERE
-	<section  class="container">
-	<div class="jumbotron">
+	<section class="container p-5 my-5 bg-light text-secondary rounded">
+
 		$message
 		<p> Please Complete the Form</p>
 		<form action="recipes-admin.php" enctype="multipart/form-data" method="post">
@@ -197,13 +197,13 @@ $pageContent.= <<<HERE
 			<input type="submit" name="cancel" value="Show Recipes List" class="btn btn-primary">
 			</div>
 		</form>
-	</div>
+
 	</section>\n
 HERE;
 }elseif($recipeID){
 	$pageContent = <<<HERE
-	<section  class="container">
-		<div class="jumbotron">
+	<section class="container p-5 my-5 bg-light text-secondary rounded">
+
 			<h2> Recipes Site </h2>
 			<h3> $recipeTitle</h3>
 			<p> $recipeContent</p>
@@ -229,7 +229,7 @@ HERE;
 					<input type="submit" name="delete" value="Delete Recipe" class="btn btn-danger">
 				</div>
 			</form>
-		</div>
+
 	</section>
 	
 HERE;
@@ -266,8 +266,8 @@ HERE;
 	}
 
 	$pageContent = <<<HERE
-	<section  class="container">
-		<div class="jumbotron">
+	<section class="container p-5 my-5 bg-light text-secondary rounded">
+
 		<h2>My Recipes Selections</h2>
 		<p>Please select a recipe below.</p>
 		$selectRecipe
@@ -276,8 +276,7 @@ HERE;
 			<div class="form-group">
 				<input type="submit" name="edit" value="Create a New Recipe" class="btn btn-success">
 			</div>
-		</form>
-		</div>
+
 	</section>
 	
 HERE;

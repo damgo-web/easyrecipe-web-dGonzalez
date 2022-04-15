@@ -39,8 +39,7 @@ HERE;
 	}
 	$recipeList .= "</ul>";
 	$pageContent = <<<HERE
-	<section class="container">
-	<div class="jumbotron">
+	<section class="container p-5 my-5 bg-light text-secondary rounded">
 	
 		<h2>My Recipes</h2>
 		<p>Please select a recipe below.</p>

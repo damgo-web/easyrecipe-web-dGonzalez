@@ -17,7 +17,7 @@ $lastname = NULL;
 $email = NULL;
 $username = NULL;
 $image_name = NULL;
-$nickname= NULL;
+
 
 $message = NULL;
 $pageContent = NULL;
@@ -49,7 +49,6 @@ if (isset($_POST['delete_profile'])){
 		$firstname = $row ['firstname'];
 		$lastname = $row ['lastname'];
 		$username = $row ['username'];
-		$nickname= $row ['nickname'];
 		$email = $row ['email'];
 		$image_name = $row ['avatar'];
 	}else{
@@ -58,8 +57,8 @@ if (isset($_POST['delete_profile'])){
 	
 
 $pageContent .= <<<HERE
-	<section class="container">
-	<div class="jumbotron">
+	<section  class="container p-5 my-5 bg-light text-secondary rounded">
+
 		<h1> Delete User Account </h1>
 		<p class="alert alert-danger"> Are you sure want to delete this member account? This action cannot be undone!</p>
 	$message
@@ -68,7 +67,6 @@ $pageContent .= <<<HERE
 	</figure>
 	<p>Email:  $email </p>
 	<p>Username: <strong> $username</strong></p>
-	<p>Nickname:<strong> $nickname</strong></p>
 	<form method="post" action="profile.php">
 		<div class="form-group">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
@@ -82,8 +80,8 @@ $pageContent .= <<<HERE
 			<input type="submit" class="btn btn-danger btn-lg" name="delete_profile" value="Delete Profile">
 		</div>
 	</form>
-	</div>
-	<section>\n
+
+<section>\n
 HERE;
 
 

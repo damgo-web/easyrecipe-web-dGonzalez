@@ -4,13 +4,13 @@ $loginButton =NULL;
 if(isset ($_SESSION['userID'])){
      $loginButton = <<<HERE
                     <form class="form-inline" action="logout.php" method="post">
-                        <button class="btn primary"  name="logout" type="submit">Log Out</button>
+                        <button class="btn btn-primary btn-sm" name="logout" type="submit">Log Out</button>
                     </form> 
 HERE;
 } else  {
      $loginButton = <<<HERE
                         <form class="form-inline" action="login.php" method="post" >
-                          <button class="btn primary" type="submit">Sign In </button>
+                          <button class="btn btn-primary btn-sm" type="submit">Sign In </button>
                         </form>
 HERE;
 }
@@ -22,53 +22,52 @@ echo<<<HERE
         <title>Easy Recipes</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-		<!-- jQuery library -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<!-- Latest compiled JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha-long-hash_code" crossorigin="anonymous">
+       <!-- Latest compiled and minified CSS -->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+       <!-- Latest compiled JavaScript -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha-long-hash_code" crossorigin="anonymous">
 	   <!-- internal css -->
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="index.css">
 		<!-- favicon -->
-        <link rel="icon" type="image/png" sizes="32x32" href="images\logo.png">
+        <link rel="icon" type="images/logo.png" sizes="32x32" href="images/logo.png">
     </head>
 <body>
 	<header>
-			<img class="img-responsive" src="images/hero2.png"  alt="Cinque Terre" >
+			<img class="img-fluid" src="images/hero2.png"  alt="Cinque Terre" >
 	</header>
-	<nav class="navbar" data-spy="affix" data-offset-top="680" >
-		<div class="navbar-header">
-			<button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
+	<nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+		<div class="container-fluid">
+			<img  class="navbar-brand" src="images/logo.png"  id="logo" alt="Page Logo" width="50" height="50">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNav" aria-controls="myNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
 			</button>
-			<img class="navbar-brand" src="images/logo.png" id="logo" alt="Page Logo">
-			<a href="index.php" style="color:white; font-weight: bold;">Home</a>
+			<div class="collapse navbar-collapse" id="myNav">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="index.php">Home</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="recipes.php">Recipe Gallery</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="profile.php">Profile</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link disabled">About Us</a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link disabled">Contact us</a>
+					</li>
+				</ul>
+				<form class="d-flex">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button id="button" class="btn btn-outline-primary btn-sm" type="submit" >Search</button>
+				</form>
+			</div>
 		</div>
-		<div class="collapse navbar-collapse" id="myNavbar" >
-			<ul class="nav navbar-nav"  >
-				<li><a href="profile.php" > Profile </a> </li>
-				<li><a href="recipes-admin.php" > Recipes </a> </li> 
-				<li><a href="#" >Gallery </a> </li>
-				<li><a href="#" >About Us</a> </li>
-				<li><a href="#"	>Contact Us</a></li>
-			</ul>
-			<form class="navbar-form navbar-right" action="/action_page.php">
-				<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search" name="search">
-					<div class="input-group-btn">
-						<button class="btn btn-default" type="submit">
-							<i class="glyphicon glyphicon-search"></i>
-						</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		 
 	</nav>
+
 HERE;
 print $pageContent;
 
@@ -87,7 +86,7 @@ echo<<<HERE
 					<br>		
 					
 					<p>© BHC Web Dev 2022</p>
-	 </footer>
+	</footer>
 
 </body>
 
