@@ -38,44 +38,6 @@ function auth_user() {
 	}
 }
 
-///function to recipes users
-function recipePost($conn, $recipeID) {
-	$stmt = $conn->stmt_init();
-	if ($stmt->prepare("SELECT recipeTitle, recipeContent, image  FROM recipe_table WHERE recipeID = ?")) {
-		$stmt->bind_param("i", $recipeID);
-		$stmt->execute();
-		$stmt->bind_result($recipeTitle, $recipeContent);
-		$stmt->fetch();
-		$stmt->close();
-	}
-	$recipeData = array($recipeTitle, $recipeContent);
-	return $recipeData;
-}
-
-function recipesPosts($conn) {
-	$stmt = $conn->stmt_init();
-	if ($stmt->prepare("SELECT recipeID, recipeTitle, recipeContent, image FROM recipe_table")) {
-		$stmt->execute();
-		$stmt->bind_result($recipeID, $recipeTitle, $recipeContent, $image_name);
-		$stmt->store_result();
-		$classList_row_cnt = $stmt->num_rows();
-		if($classList_row_cnt > 0) { 
-			while($stmt->fetch()) {  
-				$recipeData = [$recipeID => $recipeTitle];
-				$recipeListData[] = $recipeData;
-			}
-		} else { 
-			$recipeData = [0 => "There are no recipes at this time."];
-			$recipeListData[] = $recipeData;
-		}
-		$stmt->free_result();
-		$stmt->close();
-	} else { 
-		$recipeData = ["The recipes site is down now. Please try again later."];
-		$recipeListData[] = $recipeData;
-	}
-	return $recipeListData;
-}
 
 
 
@@ -117,6 +79,48 @@ function Lists($conn) {
 	}
 	return $List_users;
 }
+
+
+
+///function to recipes users
+function recipePost($conn, $recipeID) {
+	$stmt = $conn->stmt_init();
+	if ($stmt->prepare("SELECT recipeTitle, recipeContent, image  FROM recipe_table WHERE recipeID = ?")) {
+		$stmt->bind_param("i", $recipeID);
+		$stmt->execute();
+		$stmt->bind_result($recipeTitle, $recipeContent);
+		$stmt->fetch();
+		$stmt->close();
+	}
+	$recipeData = array($recipeTitle, $recipeContent);
+	return $recipeData;
+}
+
+function recipesPosts($conn) {
+	$stmt = $conn->stmt_init();
+	if ($stmt->prepare("SELECT recipeID, recipeTitle, recipeContent, image FROM recipe_table")) {
+		$stmt->execute();
+		$stmt->bind_result($recipeID, $recipeTitle, $recipeContent, $image_name);
+		$stmt->store_result();
+		$classList_row_cnt = $stmt->num_rows();
+		if($classList_row_cnt > 0) { 
+			while($stmt->fetch()) {  
+				$recipeData = [$recipeID => $recipeTitle];
+				$recipeListData[] = $recipeData;
+			}
+		} else { 
+			$recipeData = [0 => "There are no recipes at this time."];
+			$recipeListData[] = $recipeData;
+		}
+		$stmt->free_result();
+		$stmt->close();
+	} else { 
+		$recipeData = ["The recipes site is down now. Please try again later."];
+		$recipeListData[] = $recipeData;
+	}
+	return $recipeListData;
+}
+
 
 
 ?>

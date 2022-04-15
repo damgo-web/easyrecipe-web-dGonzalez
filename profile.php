@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+//Profile
 if (!$conn){
 	echo "Failed to connect to database: " . mysqli_connect_error ();
 }
@@ -66,6 +66,12 @@ if (isset($_POST['update'])) {
 		$valid = FALSE;
 	}
 	
+	$nickname = mysqli_real_escape_string($conn,ucwords(trim($_POST['nickname'])));
+	if (empty($nickname)){ 
+		$nickname_error = '<span class="text-danger"> - Field Required!</span>';
+		$valid = FALSE;
+	}
+	
 	$email = (trim($_POST['email']));
 	if (empty($email)){ 
 		$email_error = '<span class="text-danger"> - Field Required!</span>';
@@ -77,7 +83,7 @@ if (isset($_POST['update'])) {
 	} 
 	
 	if ($valid){
-		$query = "UPDATE `user_table` SET `firstname` = '$firstname', `lastname` = '$lastname', `email` = '$email' WHERE `userID`= $userID;";
+		$query = "UPDATE `user_table` SET `firstname` = '$firstname', `lastname` = '$lastname', `nickname` = '$nickname', `email` = '$email' WHERE `userID`= $userID;";
 		$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 		if (!$result) {
 			die(mysqli_error($conn));
@@ -93,7 +99,7 @@ if (isset($_POST['update'])) {
 		}else{
 			///encrypt
 			$password = password_hash($password, PASSWORD_DEFAULT);
-			$query = "UPDATE `user_table` SET  `Password` = '$password' WHERE `userID`= $userID;";
+			$query = "UPDATE `user_table` SET  `password` = '$password' WHERE `userID`= $userID;";
 			$result = mysqli_query($conn, $query);
 			if (!$result) {
 				die(mysqli_error($conn));
@@ -112,7 +118,7 @@ if (isset($_POST['update'])) {
 		unlink ("images/" . $_POST ['avatar']);
 		$filetype = pathinfo($_FILES['profile_image']['name'],PATHINFO_EXTENSION);
 		if ((($filetype == "gif") or ($filetype == "jpg") or ($filetype == "png")) and 
-		$_FILES['profile_image']['size'] < 300000) {
+		$_FILES['profile_image']['size'] < 3000000) {
 			if ($_FILES['profile_image']['error'] > 0) {
 				$valid = FALSE;
 				$file_error = $_FILES["profile_image"]["error"];
@@ -140,7 +146,7 @@ if (isset($_POST['update'])) {
 					if (move_uploaded_file($_FILES['profile_image']['tmp_name'], "$file" )){
 						$fileinfo .= "<p> Your file has been uploaded, as: 	$file</p>";
 						///change
-						$query = "UPDATE `easy_recipe` SET `avatar`= '$image_name' WHERE `userID`=$userID;";
+						$query = "UPDATE `user_table` SET `avatar`= '$image_name' WHERE `userID`=$userID;";
 						$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 						if (!$result) {
 							die(mysqli_error($conn));
@@ -191,17 +197,18 @@ $pageContent .= <<<HERE
 			<h1>Profile</h1>
 			<br>
 			<h3>$firstname $lastname</h2>
+			
 
 			<figure><img src = "images/$image_name" alt= "Profile image" class="img-responsive img-circle margin" style="display:inline;width:100px;height:100px;">
 			</figure>
 			
-			<p>Nickname:  $nickname</p>
+			<p>Nickname:  <h2>$nickname</h2></p>
 			<p>Email:  $email </p>
 			
 			<p>Username: <strong> $username</strong></p>
 			<p><small>This is your username for future login</small></p>
 			<br>
-			<p>You are logged in. </p>
+			<p> <h3>You are logged in! </h3></p>
 			<p><a href="profile.php?update&userID=$userID" class="btn  btn-default"> Update Profile </a></p>
 		</div>\n
 		
@@ -271,6 +278,11 @@ $pageContent .=<<<HERE
 			<label for="lastname">Last Name: </label>
 			<input type="text" placeholder="Last Name" name="lastname" id="lastname" value="$lastname" class="form-control">
 			$lastname_error
+		</div>
+		<div class="form-group">
+			<label for="nickname">Nickname: </label>
+			<input type="text" placeholder="Nickname" name="nickname" id="nickname" value="$nickname" class="form-control">
+			$nickname_error
 		</div>
 		<div class="form-group">
 			<label for="email">Email: </label>

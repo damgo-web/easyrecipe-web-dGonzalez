@@ -10,8 +10,6 @@ $recipeContent = NULL;
 $pageContent = NULL;
 
 
-
-
 if (filter_has_var(INPUT_GET, 'recipeID')) {
 	$recipeID = filter_input(INPUT_GET, 'recipeID');
 	$recipeData = recipePost($conn, $recipeID);

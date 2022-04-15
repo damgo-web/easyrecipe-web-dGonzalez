@@ -5,6 +5,7 @@ if (!$conn){
 	echo "Failed to connect to database: " . mysqli_connect_error ();
 }
 
+
 $pageTitle = "Login";
 $invalid_user = NULL;
 $invalid_password = NULL;
@@ -77,6 +78,7 @@ HERE;
 
 }
 $pageContent .= <<<HERE
+<br>
 	<section class="container">
 	<div class="jumbotron">
 		$message
@@ -91,7 +93,7 @@ $pageContent .= <<<HERE
 			<input type="password" class="form-control" id="password" name="password" required/>
 			$invalid_password 
 			</div>
-			<input class="btn btn-secondary btn-lg" type="submit" name="login" value="login"/>
+			<input class="btn btn-success" type="submit" name="login" value="login"/>
 		</form>
 	</div>
 	</section>

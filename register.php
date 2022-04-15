@@ -9,11 +9,13 @@ $pageTitle = "Registration";
 $valid = TRUE;
 $logged_in = FALSE;
 
+
+
 $firstname = NULL; 
 $lastname = NULL; 
 $nickname =NULL; 
 $username = NULL; 
-$role=NULL;
+
 $firstname_error = NULL;
 $lastname_error  = NULL;
 $nickname_error = NULL;
@@ -32,8 +34,8 @@ $message =NULL;
 //Submit Form 
 
 if (isset($_POST['submit'])) {
-	$role = '1';
 	
+
 	$firstname = mysqli_real_escape_string($conn,ucwords(trim($_POST['firstname'])));
 	if (empty($_POST['firstname'])){ 
 		$firstname_error = '<span class="text-danger"> - Field Required!</span>';
@@ -89,7 +91,7 @@ if (isset($_POST['submit'])) {
 	if ($valid) {
 		$filetype = pathinfo($_FILES['profile_image']['name'],PATHINFO_EXTENSION);
 		if ((($filetype == "gif") or ($filetype == "jpg") or ($filetype == "png")) and 
-		$_FILES['profile_image']['size'] < 300000) {
+		$_FILES['profile_image']['size'] < 3000000) {
 			if ($_FILES['profile_image']['error'] > 0) {
 				$valid = FALSE;
 				$file_error = $_FILES['profile_image']['error'];
@@ -119,14 +121,14 @@ if (isset($_POST['submit'])) {
 						///encrypt
 						$password = password_hash($password, PASSWORD_DEFAULT);
 						///change
-						$query = "INSERT INTO `user_table` VALUES (DEFAULT,'$role','$firstname','$lastname','$username','$nickname','$email','$password', '$image_name');";
+						$query = "INSERT INTO `user_table` VALUES (DEFAULT,'2','user','$firstname','$lastname','$username','$nickname','$email','$password', '$image_name');";
 						$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 						if (!$result) {
 							die(mysqli_error($conn));
 						} else {
 							$row_count = mysqli_affected_rows($conn);
 							if ($row_count == 1) {
-								$User_ID = mysqli_insert_id($conn);
+								$userID = mysqli_insert_id($conn);
 								header ("Location: login.php");
 								exit();
 								$logged_in = TRUE;
@@ -156,16 +158,18 @@ if ($logged_in){
 	if ($row = mysqli_fetch_assoc($result)){
 		$firstname = $row ['firstname'];
 		$lastname = $row ['lastname'];
-		$username= $row ['username'];
-		$nickname=$row ['nickname'];
+		$username = $row ['username'];
+		$nickname= $row ['nickname'];
 		$email = $row ['email'];
-		$image = $row ['avatar'];
+		$image_name = $row ['avatar'];
 	}else{
 		$message= "oops! Sorry, we could not find matching credentials ";
 	}
 
 $pageContent .= <<<HERE
+	<br>
 	<section class="container">
+
 	<div class="jumbotron">
 		$message
 		<h1> Welcome, $firstname  $lastname </h1>
@@ -232,8 +236,8 @@ $pageContent .=<<<HERE
 			<input type="file" name="profile_image" id="profile_image" class="form-control">
 			</div>
 			<div class="form-group">
-				<button class="btn btn-primary btn-lg" type="submit" name="submit" value="Submit ">Submit Application</button>
-				<button class="btn btn-secondary btn-lg" type="submit" name="reset" value="Reset ">Reset</button>
+				<button class="btn btn-primary " type="submit" name="submit" value="Submit ">Submit Application</button>
+				<button class="btn btn-danger " type="submit" name="reset" value="Reset ">Reset</button>
 			</div>
 		</form>
 		</fieldset>\n

@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+// Update Profile
 if (!$conn){
 	echo "Failed to connect to database: " . mysqli_connect_error ();
 }
@@ -56,7 +56,6 @@ if (isset($_POST['delete_profile'])){
 		$message = "Sorry, we could not find you record.";
 	}
 	
-
 
 $pageContent .= <<<HERE
 	<section class="container">

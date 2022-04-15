@@ -11,16 +11,16 @@ $pageContent .= <<<HERE
 			<h2>Why Sharing Recipes?</h2>
 			<div class="fakeimg"><img src="images/food2.jpg" class="img-rounded" alt="Cinque Terre" width="100%" height="auto"> </div>
 			<p>Sharing a recipe can be like sharing an intimate memory, one that transcends the table. ... So while recipe sharing speaks to the great human warmth that can be realized at a dinner table, recipe guarding speaks to a fundamental lack of trust. Fortunately, trust is something that can be forged over a shared plate of food.</p>
-			<p>Recipe Site</p>
-			<ul class="nav nav-pills flex-column">
-			<li class="nav-item">
-			<a class="nav-link active" href="#">Home</a>
-			</li>
-			<li class="nav-item">
-			<a class="nav-link" href="#">About</a>
-			</li>
+			
+			
+			<h1>Recipe Site</h1>
+			<ul class="nav nav-pills nav-stacked">
+			
 			<li class="nav-item">
 			<a class="nav-link" href="#">Recipe Gallery</a>
+			</li>
+			<li class="nav-item">
+			<a class="nav-link" href="register.php"">Subscribe!</a> 
 			</li>
 			<li class="nav-item">
 			<a class="nav-link disabled" href="#">More..</a>
