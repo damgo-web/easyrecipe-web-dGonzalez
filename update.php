@@ -68,13 +68,13 @@ $pageContent .= <<<HERE
 	<p>Email:  $email </p>
 	<p>Username: <strong> $username</strong></p>
 	<form method="post" action="profile.php">
-		<div class="form-group">
+		<div class="mb-3 mt-3">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
 			<input type="submit" class="btn btn-secondary btn-lg" name="profile" value="Cancel">
 		</div>
 	</form>
 	<form method="post" action="update.php">
-		<div class="form-group">
+		<div class="mb-3 mt-3">
 			<input type="hidden" class="btn btn-primary btn-lg" name="avatar" value="$image_name">
 			<input type="hidden" class="btn btn-primary btn-lg" name="userID" value="$userID">
 			<input type="submit" class="btn btn-danger btn-lg" name="delete_profile" value="Delete Profile">

@@ -122,7 +122,7 @@ if (isset($_POST['submit'])) {
 							$row_count = mysqli_affected_rows($conn);
 							if ($row_count == 1) {
 								$userID = mysqli_insert_id($conn);
-								header ("Location: login.php");
+								header ("Location: profile.php");
 								exit();
 								$logged_in = TRUE;
 								$message = "<p>Record inserted</p>";

@@ -2,8 +2,8 @@
 
 session_start();
 /* Contents of config.php */
-$conn = mysqli_connect("localhost","root","", "easy_recipe");
-//$conn = mysqli_connect("localhost:3306", "Carpenters", "RNQxufzU","Carpenters");
+//$conn = mysqli_connect("localhost","root","", "easy_recipe");
+$conn = mysqli_connect("localhost:3306", "Carpenters", "RNQxufzU","Carpenters");
 
 // where $conn is the name you assign to the connection,
 // user is the authorized user name (your avatar name),
@@ -12,8 +12,8 @@ $conn = mysqli_connect("localhost","root","", "easy_recipe");
 
 
 // Set up debug mode	
-/*
-function debug_data() { // called in template to print arrays at top of any page.
+
+/*function debug_data() { // called in template to print arrays at top of any page.
 	echo '<pre>SESSION is ';
 	echo print_r($_SESSION);
 	echo 'COOKIE is ';
@@ -24,8 +24,7 @@ function debug_data() { // called in template to print arrays at top of any page
 	echo print_r($_GET);
 	echo '</pre>';
 }
-debug_data(); // Comment this out to hide debug information
-*/
+debug_data(); // Comment this out to hide debug information*/
 
 
 
@@ -37,6 +36,7 @@ function auth_user() {
 		return FALSE;
 	}
 }
+
 
 
 
@@ -80,12 +80,10 @@ function Lists($conn) {
 	return $List_users;
 }
 
-
-
 ///function to recipes users
 function recipePost($conn, $recipeID) {
 	$stmt = $conn->stmt_init();
-	if ($stmt->prepare("SELECT recipeTitle, recipeContent, image  FROM recipe_table WHERE recipeID = ?")) {
+	if ($stmt->prepare("SELECT recipeTitle, recipeContent,image  FROM recipe_table WHERE recipeID = ?")) {
 		$stmt->bind_param("i", $recipeID);
 		$stmt->execute();
 		$stmt->bind_result($recipeTitle, $recipeContent);
@@ -100,7 +98,7 @@ function recipesPosts($conn) {
 	$stmt = $conn->stmt_init();
 	if ($stmt->prepare("SELECT recipeID, recipeTitle, recipeContent, image FROM recipe_table")) {
 		$stmt->execute();
-		$stmt->bind_result($recipeID, $recipeTitle, $recipeContent, $image_name);
+		$stmt->bind_result($recipeID, $recipeTitle, $image_name);
 		$stmt->store_result();
 		$classList_row_cnt = $stmt->num_rows();
 		if($classList_row_cnt > 0) { 
@@ -120,7 +118,5 @@ function recipesPosts($conn) {
 	}
 	return $recipeListData;
 }
-
-
 
 ?>

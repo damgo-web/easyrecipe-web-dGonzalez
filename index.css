@@ -8,9 +8,51 @@ nav {
   color: white;
 
 }
+
+header  {
+  max-width: 100%;
+  max-height: auto;
+  align-content: center;
+  background: #FDAC53;
+} 
+
+
+header h1 {
+  position: relative;
+  top: 20%;
+  height: 130px;
+  width: auto;
+  background-color: #FDAC53;
+  opacity: 75%;
+  padding-left: 35vw;
+  margin: auto;
+  font-weight: bold;
+  font-size: 15vh;
+  font-family: 'Satisfy', cursive;
+  color: #00758f;
+  text-shadow: 2px 2px 5px white;
+}
+
+.hero {
+  background-image: url("images/hero.png");
+  max-width: 100vw;
+  height: 35vw;
+  object-fit: contain;
+}
+.hero2 {
+  background-image: url("images/hero.png");
+  max-width: 100vw;
+  height:20vw;
+  object-fit:contain;
+}
+
+li a:hover{
+  background-color: #00758f;
+  color: white;
+}
+
 .gradient-custom {
-
-
+	
   background:  #00758f;
   background: -webkit-linear-gradient(to right, rgba(0, 117, 143, 1), rgba(95, 96, 99, 1));
   background: linear-gradient(to right, rgba(0, 117, 143, 1), rgba(95, 96, 99, 1));
@@ -25,34 +67,4 @@ footer {
    color: white;
    text-align: center;
  }
-
-
-#YouTube {
-display: inline-block;
-width: 72px;
-height: 72px;
-background-position: -72px 0;
-background-image: url("images/sprites.png") ;
-}
-#Pinterest {
-display: inline-block;
-width: 72px;
-height: 72px;
-background-position: 0 -72px;
-background-image: url("images/sprites.png");
-}
-#Instagram {
-display: inline-block;
-width: 72px;
-height: 72px;
-background-position: -72px -288px;
-background-image: url("images/sprites.png") ;
-}
-#Twitter {
-display: inline-block;
-width: 72px;
-height: 72px;
-background-position: 0 0px;
-background-image: url("images/sprites.png");
-}
 

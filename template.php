@@ -1,41 +1,32 @@
-<?php
-
-$loginButton =NULL;
-if(isset ($_SESSION['userID'])){
-     $loginButton = <<<HERE
-                    <form class="form-inline" action="logout.php" method="post">
-                        <button class="btn btn-primary btn-sm" name="logout" type="submit">Log Out</button>
-                    </form> 
-HERE;
-} else  {
-     $loginButton = <<<HERE
-                        <form class="form-inline" action="login.php" method="post" >
-                          <button class="btn btn-primary btn-sm" type="submit">Sign In </button>
-                        </form>
-HERE;
-}
-
-echo<<<HERE
 <!DOCTYPE html>
 <html lang="en">
-    <head >
+     <head >
         <title>Easy Recipes</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-       <!-- Latest compiled and minified CSS -->
-         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-       <!-- Latest compiled JavaScript -->
-          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha-long-hash_code" crossorigin="anonymous">
-	   <!-- internal css -->
-        <link rel="stylesheet" href="index.css">
-		<!-- favicon -->
-        <link rel="icon" type="images/logo.png" sizes="32x32" href="images/logo.png">
+        <!-- Latest compiled and minified CSS -->
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Latest compiled JavaScript -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> 
+        <!--FontAwesome kit-->
+            <script src="https://kit.fontawesome.com/c0e800fc4a.js" crossorigin="anonymous"></script>
+            
+        <!--External Style sheet-->
+            <link rel="stylesheet"  type="text/css" href="index.css">
+        <!-- favicon -->
+            <link rel="icon" type="image/png" sizes="32x32" href="images\logo.png">
+        <!--header font from google-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     </head>
 <body>
-	<header>
-			<img class="img-fluid" src="images/hero2.png"  alt="Cinque Terre" >
-	</header>
+	<header class="hero">
+       <h1>Easy Recipies</h1>
+     </header>
+
+
 	<nav class="navbar navbar-expand-sm navbar-dark sticky-top">
 		<div class="container-fluid">
 			<img  class="navbar-brand" src="images/logo.png"  id="logo" alt="Page Logo" width="50" height="50">
@@ -48,10 +39,13 @@ echo<<<HERE
 					<a class="nav-link active" aria-current="page" href="index.php">Home</a>
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" href="recipes.php">Recipe Gallery</a>
+					<a class="nav-link" href="profile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" href="profile.php">Profile</a>
+					<a class="nav-link" href="recipes.php">Recipes </a>
+					</li>
+					<li class="nav-item">
+					<a class="nav-link" href="recipes.php">Gallery</a>
 					</li>
 					<li class="nav-item">
 					<a class="nav-link disabled">About Us</a>
@@ -67,22 +61,39 @@ echo<<<HERE
 			</div>
 		</div>
 	</nav>
-
-HERE;
+<?php
 print $pageContent;
-
-
-echo<<<HERE
+?>
 	<footer class="container-fluid">
 	<br>
-	$loginButton
+	<?php
+//button function
+$loginButton =NULL;
+if(isset ($_SESSION['userID'])){
+     $loginButton = <<<HERE
+                    <form class="form-inline" action="logout.php" method="post">
+                        <button class="btn btn-primary btn-sm" name="logout" type="submit">Log Out</button>
+                    </form> 
+HERE;
+} else  {
+     $loginButton = <<<HERE
+                        <form class="form-inline" action="login.php" method="post" >
+                          <button class="btn btn-primary btn-sm" type="submit">Sign In </button>
+                        </form>
+HERE;
+}
+
+print $loginButton;
+?>
+
+	
 					<a href="register.php" class= > Subscribe in our Recipes WebSite </a>		
 					<hr>	
 					<p> Developed by Yordin Kirk, Semhar Bire, Damaris Gonzalez</p>
-					<a href="https://www.youtube.com/" class="btn"><span class="fab fa-youtube-square" style="font-size:52px;color:red"></span></a>
-					<a href="https://www.instagram.com/" class="btn"><span class="fab fa-instagram" style="font-size:52px;color:fuchsia"></span></a>
-					<a href="https://www.pinterest.com/" class="btn"><span class="fab fa-pinterest-square" style="font-size:52px;color:firebrick"></span></a>
-					<a href="https://www.twitter.com/" class="btn"><span class="fab fa-twitter-square" style="font-size:52px;color:DeepSkyBlue"></span></a>
+					<a href="https://www.youtube.com/" target="_blank"><span class="fab fa-youtube-square" ></span></a>
+					<a href="https://www.instagram.com/" target="_blank"><span class="fab fa-instagram" ></span></a>
+					<a href="https://www.pinterest.com/" target="_blank"><span class="fab fa-pinterest-square"></span></a>
+					<a href="https://www.twitter.com/" target="_blank"><span class="fab fa-twitter-square"></span></a>
 					<br>		
 					
 					<p>© BHC Web Dev 2022</p>
@@ -91,5 +102,3 @@ echo<<<HERE
 </body>
 
 </html>
-HERE;
-?>

@@ -130,7 +130,7 @@ if (filter_has_var(INPUT_POST, 'process')){
 		}
 		if(filter_has_var(INPUT_POST, 'update'	)){
 			$stmt = $conn->stmt_init();
-			if($stmt->prepare ("UPDATE `recipe_table` SET `recipeTitle`=?, `recipeContent`=?  `image` =? WHERE `recipeID`=?")){
+			if($stmt->prepare ("UPDATE `recipe_table` SET `recipeTitle`=?, `recipeContent`=?, `image` =? WHERE `recipeID`=?")){
 				$stmt->bind_param("ssis", $recipeTitle, $recipeContent, $recipeID, $image_name);
 				$stmt->execute();
 				$stmt->close();
