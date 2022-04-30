@@ -38,7 +38,7 @@ function auth_user() {
 }
 
 
-
+/*
 
 
 ///functions users
@@ -118,5 +118,5 @@ function recipesPosts($conn) {
 	}
 	return $recipeListData;
 }
-
+*/
 ?>

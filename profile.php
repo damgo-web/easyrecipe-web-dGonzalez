@@ -4,10 +4,10 @@ include 'config.php';
 if (!$conn){
 	echo "Failed to connect to database: " . mysqli_connect_error ();
 }
-if(isset ($_SESSION['userID'])){
-	$userID =  $_SESSION['userID'];
-///}elseif(isset ($_GET['userID'])){
-	///$userID =  $_GET['userID'];
+if(isset ($_POST['userID'])){
+	$userID =  $_POST['userID'];
+}elseif(isset ($_GET['userID'])){
+$userID =  $_GET['userID'];
 }else{
 	header ("Location: register.php");
 	exit();

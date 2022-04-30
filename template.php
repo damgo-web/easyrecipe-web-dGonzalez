@@ -66,7 +66,7 @@ print $pageContent;
 ?>
 	<footer class="container-fluid">
 	<br>
-	<?php
+<?php
 //button function
 $loginButton =NULL;
 if(isset ($_SESSION['userID'])){
