@@ -289,7 +289,7 @@ $pageContent .=<<<HERE
 			<input type="submit" class="btn btn-danger btn-lg" name="delete" value="Delete Profile">
 		</div>
 	</form>
-	<a href="profile.php" class="text-start" > Back </a>	
+	<a href="profile.php?userID=$userID" class="text-start" > Back </a>	
 	</div>
 </section>\n
 HERE;

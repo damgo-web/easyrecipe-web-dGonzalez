@@ -114,7 +114,7 @@ if (isset($_POST['submit'])) {
 						///encrypt
 						$password = password_hash($password, PASSWORD_DEFAULT);
 						///change
-						$query = "INSERT INTO `user_table` VALUES (DEFAULT,'2','$firstname','$lastname','$username','$email','$password', '$image_name');";
+						$query = "INSERT INTO `user_table` VALUES (DEFAULT,'1','$firstname','$lastname','$username','$email','$password', '$image_name');";
 						$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 						if (!$result) {
 							die(mysqli_error($conn));

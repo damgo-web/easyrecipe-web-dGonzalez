@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-     <head >
+    <head >
         <title>Easy Recipes</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
           <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
         <!-- Latest compiled JavaScript -->
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> 
         <!--FontAwesome kit-->
-            <script src="https://kit.fontawesome.com/c0e800fc4a.js" crossorigin="anonymous"></script>
-            
+          <script src="https://kit.fontawesome.com/c0e800fc4a.js" crossorigin="anonymous"></script>
         <!--External Style sheet-->
-            <link rel="stylesheet"  type="text/css" href="css/index.css">
+          <link rel="stylesheet"  type="text/css" href="css/index.css">
         <!-- favicon -->
-            <link rel="icon" type="image/png" sizes="32x32" href="images\logo.png">
+          <link rel="icon" type="image/png" sizes="32x32" href="images/logo.png">
         <!--header font from google-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-    </head>
-<body>
-	<header class="hero">
-       <h1>Easy Recipies</h1>
-     </header>
-
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Satisfy&display=swap" rel="stylesheet">
+    <body>
+    <!--different header image other for all other pages-->
+    <header class="hero2">
+        <h1>Easy Recipies</h1>
+      </header>
 <!--nav bar-->
 	<nav class="navbar navbar-expand-sm navbar-dark sticky-top">
 		<div class="container-fluid">
@@ -58,46 +55,46 @@
 				</ul>
 				<form class="d-flex">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button id="searchbtn" class="btn btn-outline-primary btn-sm" type="submit" >Search</button>
+					<button id="searchbutton" class="btn btn-outline-primary btn-sm" type="submit" >Search</button>
 				</form>
 			</div>
 		</div>
 	</nav>
+        <!-- End of NavBar -->
+        <!--add burger-->
 <?php
 print $pageContent;
 ?>
-
-
-	<footer class="container-fluid">
+<hr>
+    <footer class="container-fluid">
 	<br>
 <?php
 //button function
 $loginButton =NULL;
 if(isset ($_SESSION['userID'])){
      $loginButton = <<<HERE
-                    <form class="form-inline" action="logout.php" method="post">
-                        <button id="signbtn" class="btn btn-sm" name="logout" type="submit">Log Out</button>
+                    <form id="signbtn" class="form-inline" action="logout.php" method="post">
+                        <button class="btn btn-primary btn-sm" name="logout" type="submit">Log Out</button>
                     </form> 
 HERE;
 } else  {
      $loginButton = <<<HERE
-                        <form class="form-inline" action="login.php" method="post" >
-                          <button id="signbtn" class="btn btn-sm" type="submit">Sign In </button>
+                        <form id="signbtn" class="form-inline" action="login.php" method="post" >
+                          <button class="btn btn-primary btn-sm" type="submit">Sign In </button>
                         </form>
 HERE;
 }
 
 print $loginButton;
 ?>
-		<a href="register.php" class= > Subscribe in our Recipes WebSite </a>		
-		<p> Developed by Yordin Kirk, Semhar Bire, Damaris Gonzalez</p>
-		<p>© BHC Web Dev 2022</p>
-		<a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-		<a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram-square"></i></a>
-		<a href="https://www.pinterest.com" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
-		<a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
-	</footer>
+	<a href="register.php" class= > Subscribe in our Recipes WebSite </a>		
 
+    <p> Developed by Yordin Kirk, Semhar Bire, Damaris Gonzalez</p>
+    <p>© BHC Web Dev 2022</p>
+    <a href="https://www.youtube.com" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram-square"></i></a>
+    <a href="https://www.pinterest.com" target="_blank"><i class="fa-brands fa-pinterest"></i></a>
+    <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
+    </footer>
 </body>
-
 </html>
