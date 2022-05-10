@@ -1,11 +1,29 @@
 <?php
+//include 'config.php';
 
+if(filter_has_var(INPUT_POST, 'logout')) {
+	$msg = 'You are Logged out.';
+	foreach ($_SESSION as $field => $value){
+		unset($_SESSION[$field]);
+	}
+	session_destroy();
+	header("Location: index.php?msg=$msg");
+	exit;
+}
+if(isset($_GET['msg'])){
+	$msg = $_GET['msg'];
+	$msg = "<div class='alert alert-danger'>	$msg </div>";
+} else {
+	$msg = NULL;
+}
 
 $pageTitle = "Home";
 $pageContent = NULL;
 
 $pageContent .= <<<HERE
 <main class= "container-fluid">
+$msg
+
     <div class="row">
 		<div class="col-sm-4">
 			<h2>Why Sharing Recipes?</h2>

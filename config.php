@@ -27,8 +27,16 @@ $conn = mysqli_connect("localhost:3306", "Carpenters", "RNQxufzU","Carpenters");
 debug_data(); // Comment this out to hide debug information*/
 
 
-
 // authorized function
+/*
+function auth_admin($id) {
+	if($_SESSION['roleID'] >= $id) {
+	if(isset($_SESSION['roleID']) && $_SESSION['roleID'] >= $id) {
+		return TRUE;
+	} else {
+		return FALSE;
+	}
+}
 function auth_user() {
 	if(isset($_SESSION['userID'])) {
 		return TRUE;
@@ -37,6 +45,6 @@ function auth_user() {
 	}
 }
 
-
+*/
 
 ?>

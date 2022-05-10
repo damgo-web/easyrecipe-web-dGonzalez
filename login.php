@@ -43,15 +43,16 @@ HERE;
 	}
 	if (password_verify ($passwordSubmit,$password)) {
 		$stmt = $conn->stmt_init();
-		if ($stmt->prepare ("SELECT `firstname`, `lastname`, `email` FROM `user_table` WHERE `userID`= ?")){
+		if ($stmt->prepare ("SELECT `firstname`, `roleID` FROM `user_table` WHERE `userID`= ?")){
 			$stmt->bind_param ("i",$userID);
 			$stmt->execute();
 			$stmt->store_result();
-			$stmt->bind_result($firstname, $lastname, $email);
+			$stmt->bind_result($firstname, $roleID);
 			
 			if ($stmt-> num_rows ==1){
 				$stmt->fetch();
 				$_SESSION ['userID'] = $userID;
+				$_SESSION ['roleID'] = $roleID;
 				
 				setcookie("firstname", $firstname, time()+(3600*3));
 				

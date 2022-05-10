@@ -44,7 +44,7 @@
 					<a class="nav-link" href="profile.php">Profile</a>
 					</li>
 					<li class="nav-item">
-					<a class="nav-link" href="recipes.php">Recipes </a>
+					<a class="nav-link" href="recipe.php">Recipes </a>
 					</li>
 					<li class="nav-item">
 					<a class="nav-link" href="gallery.php">Gallery</a>

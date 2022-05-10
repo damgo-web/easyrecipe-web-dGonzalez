@@ -60,7 +60,6 @@ HERE;
 HERE;
 
 
-include 'recipeTemplate.php';
-
+include 'template.php';
 ?>
 
